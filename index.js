@@ -318,7 +318,7 @@ run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
-    res.send('moments matrimony is running')
+    res.send('moments matrimony is running updated')
 })
 
 app.listen(port, () => {
