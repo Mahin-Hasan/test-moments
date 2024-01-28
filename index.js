@@ -248,6 +248,17 @@ async function run() {
             }
             res.send({ premium }); // set admin true
         })
+        app.patch('/invoice/request/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) };
+            const setRequest = {
+                $set: {
+                    order: 'granted'
+                }
+            }
+            const result = await invoiceCollection.updateOne(filter, setRequest);
+            res.send(result);
+        })
         app.post('/invoice', async (req, res) => {
             const invoice = req.body;
             const result = await invoiceCollection.insertOne(invoice);
